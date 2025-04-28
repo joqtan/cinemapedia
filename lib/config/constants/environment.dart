@@ -1,3 +1,5 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Environment {
-  static const String moviedbKey = 'MOVIEDB_KEY';
+  static String moviedbKey = dotenv.env['MOVIEDB_KEY']!;
 }
