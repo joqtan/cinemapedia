@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:cinemapedia/config/constants/environment.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 import 'package:cinemapedia/domain/datasources/movies_datasource.dart';
@@ -10,7 +9,7 @@ class MoviedbDatasourceImpl implements MoviesDatasource {
   final dio = Dio(
     BaseOptions(
       baseUrl: 'https://api.themoviedb.org/3',
-      queryParameters: {'api_key': DotEnv().env[Environment.moviedbKey], 'language': 'es-SV'},
+      queryParameters: {'api_key': Environment.moviedbKey, 'language': 'es-SV'},
     ),
   );
 
