@@ -53,7 +53,13 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
     return CustomScrollView(
       slivers: [
-        SliverAppBar(floating: true, flexibleSpace: FlexibleSpaceBar(title: CustomAppbar())),
+        SliverAppBar(
+          floating: true, 
+          flexibleSpace: FlexibleSpaceBar(title: CustomAppbar()),
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.search),),
+          ],
+        ),
         SliverList(
           delegate: SliverChildBuilderDelegate((context, index) {
             return Column(
@@ -63,22 +69,26 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                   movies: nowPlayingMovies,
                   title: 'En cines',
                   subTitle: 'Lunes 12',
-                  loadNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  loadNextPage: () => 
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
                 ),
                 MovieHorizontalListview(
                   movies: popularMovies,
                   title: 'Populares',
-                  loadNextPage: () => ref.read(popularMoviesProvider.notifier).loadNextPage(),
+                  loadNextPage: () => 
+                    ref.read(popularMoviesProvider.notifier).loadNextPage(),
                 ),
                 MovieHorizontalListview(
                   movies: topRatedMovies,
                   title: 'Mejor calificadas',
-                  loadNextPage: () => ref.read(topRatedMoviesProvider.notifier).loadNextPage(),
+                  loadNextPage: () => 
+                    ref.read(topRatedMoviesProvider.notifier).loadNextPage(),
                 ),
                 MovieHorizontalListview(
                   movies: upcomingMovies,
                   title: 'Proximamente',
-                  loadNextPage: () => ref.read(upcomingMoviesProvider.notifier).loadNextPage(),
+                  loadNextPage: () => 
+                    ref.read(upcomingMoviesProvider.notifier).loadNextPage(),
                 ),
                 
               ],
