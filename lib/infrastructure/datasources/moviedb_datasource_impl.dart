@@ -29,7 +29,7 @@ class MoviedbDatasourceImpl implements MoviesDatasource {
   @override
   Future<List<Movie>> getNowPlaying({int page = 1}) async {
     final response = await dio.get('/movie/now_playing', queryParameters: {'page': page});
-    
+
     return _jsonToMovies(response.data);
   }
 
@@ -53,13 +53,13 @@ class MoviedbDatasourceImpl implements MoviesDatasource {
 
     return _jsonToMovies(response.data);
   }
-  
+
   @override
   Future<Movie> getMovieById(String id) async {
     final response = await dio.get('/movie/$id');
 
     if (response.statusCode != 200) throw Exception('Movie with id $id not found');
-    
+
     return MovieMapper.moviedbDetailToEntity(MovieDetailMoviedb.fromJson(response.data));
   }
 }
