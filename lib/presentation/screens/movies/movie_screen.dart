@@ -66,7 +66,23 @@ class _MovieDetails extends StatelessWidget {
               const SizedBox(width: 10),
               SizedBox(
                 width: (size.width - 40) * 0.7,
-                child: Column(children: [Text(movie.title, style: textStyles.titleLarge), Text(movie.overview)]),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [Text(movie.title, style: textStyles.titleLarge), Text(movie.overview)],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Wrap(
+            children: [
+              ...movie.genreIds.map(
+                (gender) => Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  child: Chip(label: Text(gender), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                ),
               ),
             ],
           ),
