@@ -10,13 +10,7 @@ class MovieHorizontalListview extends StatefulWidget {
   final String? subTitle;
   final VoidCallback? loadNextPage;
 
-  const MovieHorizontalListview({
-    super.key,
-    required this.movies,
-    this.title,
-    this.subTitle,
-    this.loadNextPage,
-  });
+  const MovieHorizontalListview({super.key, required this.movies, this.title, this.subTitle, this.loadNextPage});
 
   @override
   State<MovieHorizontalListview> createState() => _MovieHorizontalListviewState();
@@ -31,8 +25,7 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
     super.initState();
 
     _scrollController.addListener(() {
-      if ((_scrollController.position.pixels + _scrollThreshold) >=
-          _scrollController.position.maxScrollExtent) {
+      if ((_scrollController.position.pixels + _scrollThreshold) >= _scrollController.position.maxScrollExtent) {
         widget.loadNextPage?.call();
       }
     });
@@ -51,8 +44,7 @@ class _MovieHorizontalListviewState extends State<MovieHorizontalListview> {
       height: 355,
       child: Column(
         children: [
-          if (widget.title != null || widget.subTitle != null)
-            _Title(title: widget.title, subTitle: widget.subTitle),
+          if (widget.title != null || widget.subTitle != null) _Title(title: widget.title, subTitle: widget.subTitle),
           Expanded(
             child: ListView.builder(
               controller: _scrollController,
@@ -96,10 +88,7 @@ class _Slide extends StatelessWidget {
                   if (loadingProgress != null) {
                     return Center(child: const CircularProgressIndicator(strokeWidth: 2));
                   }
-                  return GestureDetector(
-                    onTap: () => context.push('/movie/${movie.id}'),
-                    child: FadeIn(child: child),
-                  );
+                  return GestureDetector(onTap: () => context.push('/movie/${movie.id}'), child: FadeIn(child: child));
                 },
               ),
             ),
@@ -107,12 +96,7 @@ class _Slide extends StatelessWidget {
           const SizedBox(height: 5),
           SizedBox(
             width: 150,
-            child: Text(
-              movie.title,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: textTheme.titleSmall,
-            ),
+            child: Text(movie.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: textTheme.titleSmall),
           ),
           SizedBox(
             width: 150,
